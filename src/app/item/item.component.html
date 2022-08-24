@@ -1,7 +1,9 @@
 <div class="item">
 
-  <input [id]="item.description" type="checkbox" (change)="item.done = !item.done" [checked]="item.done" />
-  <label [for]="item.description">{{item.description}}</label>
+  <input [id]="item" type="checkbox" (change)="item.done = !item.done" [checked]="item.done" />
+  <label [for]="item" id="title">{{item.title}}</label>
+  <br>
+  <label [for]="item" id="desc">{{item.description}}</label>
 
   <div class="btn-wrapper" *ngIf="!editable">
     <button class="btn" (click)="editable = !editable">Edit</button>
@@ -10,11 +12,12 @@
 
   <!-- This section shows only if user clicks Edit button -->
   <div *ngIf="editable">
-    <input class="sm-text-input" placeholder="edit item" [value]="item.description" #editedItem (keyup.enter)="saveItem(editedItem.value)">
+    <input class="sm-text-input" placeholder="edit title" [value]="item.title" #editedTitle (keyup.enter)="saveItem(editedTitle.value)">
+    <input class="sm-text-input" placeholder="edit description" [value]="item.description" #editedItem (keyup.enter)="saveItem(editedItem.value)">
 
     <div class="btn-wrapper">
       <button class="btn" (click)="editable = !editable">Cancel</button>
-      <button class="btn btn-save" (click)="saveItem(editedItem.value)">Save</button>
+      <button class="btn btn-save" (click)="saveItem(editedTitle.value,editedItem.value)">Save</button>
     </div>
 
 	</div>

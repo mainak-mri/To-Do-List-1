@@ -1,58 +1,10 @@
-<img src="assets/img/moon.png" id="icon">
-<div class="main">
-  <h1>Mainak's To Do List</h1>
-
-  <label for="addItemInput">What would you like to do today?</label>
-
-  <input
-    #newTitle
-    placeholder="Add a title"
-  (keyup.enter)="addTitle(newTitle.value);
-  newTitle.value = ''"
-    class="lg-text-input"
-    id="addItemInput"
-  />
-  <!-- <br>
-  <input
-    #newItem
-    placeholder="Description"
-    (keyup.enter)="addItem(newItem.value); newItem.value = ''"
-    class="lg-text-input"
-    id="addItemInput"
-  /> -->
-
-  <button class="btn-primary" (click)="addTitle(newTitle.value)">Add</button>
-
-  <div class="btn-wrapper">
-    <button
-      class="btn btn-menu"
-      [class.active]="filter == 'all'"
-      (click)="filter = 'all'">
-      All
-    </button>
-
-    <button
-      class="btn btn-menu"
-      [class.active]="filter == 'active'"
-      (click)="filter = 'active'">
-      To Do
-    </button>
-
-    <button
-      class="btn btn-menu"
-      [class.active]="filter == 'done'"
-      (click)="filter = 'done'">
-      Done
-    </button>
-  </div>
-
-  <h2>{{items.length}} <span *ngIf="items.length === 1; else elseBlock">item</span>
-  <ng-template #elseBlock>items</ng-template></h2>
-
-  <ul>
-    <li *ngFor="let item of items">
-      <app-item (remove)="remove(item)" [item]="item"></app-item>
-    </li>
+<nav class='navbar navbar-expand navbar navbar-dark bg-dark'>
+  <a class='navbar-brand'>{{pageTitle}}</a>
+  <ul class='nav nav-pills'>
+    <li><a class='nav-link' routerLinkActive='active' routerLink='/welcome'>Home</a></li>
+    <li><a class='nav-link' routerLinkActive='active' routerLink='/item'>To Do List</a></li>
   </ul>
+</nav>
+<div class="container">
+<router-outlet></router-outlet>
 </div>
-

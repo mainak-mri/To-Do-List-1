@@ -14,9 +14,10 @@ export class ItemComponent {
   @Input() newItem: string;
   @Output() remove = new EventEmitter<Item>();
 
-  saveItem(description) {
+  saveItem(title,description) {
     if (!description) return;
     this.editable = false;
+    this.item.title = title;
     this.item.description = description;
   }
 
