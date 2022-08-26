@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+
+import { Component, Input, OnInit,EventEmitter,Output } from '@angular/core';
 import { Item } from '../item';
 
 @Component({
@@ -12,16 +13,17 @@ export class TodoItemComponent {
   @Input() item: Item;
 
 
-  allItems = [];
-  private _listSearch: string = '';
-  get listSearch():string{
-    return this.listSearch;
-  }
 
-  set listSearch(value:string){
-    this._listSearch = value;
-    console.log('In setter:',value);
-  }
+  allItems = [];
+  // private _listSearch: string = '';
+  // get listSearch():string{
+  //   return this.listSearch;
+  // }
+
+  // set listSearch(value:string){
+  //   this._listSearch = value;
+  //   console.log('In setter:',value);
+  // }
   get items() {
     if (this.filter === 'all') {
       return this.allItems;
@@ -55,5 +57,10 @@ export class TodoItemComponent {
   remove(item) {
     this.allItems.splice(this.allItems.indexOf(item), 1);
   }
-
+  searchText: string = '';
+  @Output() onSearchTextChanged = new EventEmitter<string>();
+  onSearchTextEntered(searchValue:string){
+    this.searchText = searchValue;
+    console.log(this.searchText);
+  }
 }

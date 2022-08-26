@@ -6,6 +6,8 @@ import { ItemComponent } from './item/item.component';
 import { WelcomeComponent } from './home/welcome/welcome.component';
 import { RouterModule, Routes } from '@angular/router';
 import { TodoItemComponent } from './todo-item/todo-item.component';
+import { FormsModule } from '@angular/forms';
+import { SearchComponent } from './home/search/search.component';
 
 const appRoutes: Routes = [
   {path: 'welcome', component: WelcomeComponent},
@@ -19,9 +21,11 @@ const appRoutes: Routes = [
     ItemComponent,
     WelcomeComponent,
     TodoItemComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],

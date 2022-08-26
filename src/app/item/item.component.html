@@ -1,4 +1,5 @@
-<div class="item">
+<!-- <app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search> -->
+<div class="item" >
 
   <input [id]="item" type="checkbox" (change)="item.done = !item.done" [checked]="item.done" />
   <label [for]="item" id="title">{{item.title}}</label>
