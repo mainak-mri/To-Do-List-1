@@ -59,11 +59,15 @@
 
   <ul>
     <li *ngFor="let item of items">
-      <div *ngIf="searchText==='' || item.title.toLowerCase().includes(searchText)">
-      <app-item (remove)="remove(item)" [item]="item" ></app-item>
+      <div *ngIf="searchText==='' || item.title.toLowerCase().includes(searchText) || item.description.toLowerCase().includes(searchText)">
+
+      <app-item (remove)="remove(item)" [item]="item">
+      </app-item>
+
     </div></li>
 
   </ul>
+
 </div>
 
 
