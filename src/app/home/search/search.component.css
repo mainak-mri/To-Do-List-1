@@ -51,9 +51,9 @@ input#search-bar{
   top: -60px;
   right: -20px;
 }
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 400px) {
   .search-container {
-    width: 70%;
+    width: 80%;
   }
 }
 

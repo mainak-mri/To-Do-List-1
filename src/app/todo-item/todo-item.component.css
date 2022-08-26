@@ -19,7 +19,7 @@ body {
     width: 70%;
   }
 }
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 200px) {
   .icon {
     width: 70%;
   }
