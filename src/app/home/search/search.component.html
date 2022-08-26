@@ -1,8 +1,15 @@
-<div class="search">
+<!-- <div class="search">
   <nav class="navbar navbar-light bg-light">
     <form class="form-inline">
       <input class="form-control mr-sm-2" type="search" placeholder="Search todo" aria-label="Search" class="pull-right" name="search" [(ngModel)]="enteredSearchValue" (input)="onSearchTextChanged()">
       <button class="btn btn-outline-dark my-2 my-sm-0" type="submit" id="search">Search</button>
     </form>
   </nav>
-  </div>
+  </div> -->
+
+  <body>
+    <form class="search-container">
+      <input type="text" id="search-bar" placeholder="Search your todos" name="search" [(ngModel)]="enteredSearchValue" (input)="onSearchTextChanged()">
+      <img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png">
+    </form>
+  </body>

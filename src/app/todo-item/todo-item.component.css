@@ -19,6 +19,11 @@ body {
     width: 70%;
   }
 }
+@media screen and (min-width: 600px) {
+  .icon {
+    width: 70%;
+  }
+}
 
 label {
   font-size: 1.5rem;
