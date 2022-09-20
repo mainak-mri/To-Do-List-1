@@ -1,36 +1,28 @@
 <div class="icon">
   <img src="assets/img/moon.png" id = "icon">
 </div>
-<!-- <div class="search">
-<nav class="navbar navbar-light bg-light">
-  <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search todo" aria-label="Search" class="pull-right" name="search" [(ngModel)]="enteredSearchValue" (input)="onSearchTextChanged()">
-    <button class="btn btn-outline-dark my-2 my-sm-0" type="submit" id="search">Search</button>
-  </form>
-</nav>
-</div> -->
+
 <app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
 <div class="main">
   <h1>Mainak's To Do List</h1>
 
   <label for="addItemInput">What would you like to do today?</label>
-
+<form action="#">
   <input
-    #newTitle
+    #newTitle type="text"
     placeholder="Add a title"
     class="lg-text-input"
-    id="addItemInput"
-  />
+    id="addItemInput" required>
   <br>
   <input
-    #newItem
+    #newItem type="text"
     placeholder="Description"
-
     class="lg-text-input"
-    id="addItemInput"
-  />
+    id="addItemInput" required>
 
-  <button class="btn-primary" (click)="addItem(newTitle.value,newItem.value);newItem.value='';newTitle.value=''">Add</button>
+  <button type ="submit" class="btn-primary" (click)="addItem(newTitle.value,newItem.value);newItem.value='';newTitle.value=''">Add</button>
+  </form>
+
   <div class="btn-wrapper">
     <button
       class="btn btn-menu"
@@ -57,17 +49,20 @@
   <h2>{{items.length}} <span *ngIf="items.length === 1; else elseBlock">item</span>
   <ng-template #elseBlock>items</ng-template></h2>
 
+  <div cdkDropList class="item-list" (cdkDropListDropped)="drop($event)">
   <ul>
-    <li *ngFor="let item of items">
+    <li class = 'item-box' *ngFor="let item of items" cdkDrag>
       <div *ngIf="searchText==='' || item.title.toLowerCase().includes(searchText) || item.description.toLowerCase().includes(searchText)">
 
       <app-item (remove)="remove(item)" [item]="item">
       </app-item>
 
-    </div></li>
+    </div>
+  </li>
 
   </ul>
-
 </div>
+</div>
+
 
 

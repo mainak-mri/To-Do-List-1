@@ -1,7 +1,7 @@
 
 import { Component, Input, OnInit,EventEmitter,Output } from '@angular/core';
 import { Item } from '../item';
-
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 @Component({
   selector: 'app-todo-item',
   templateUrl: './todo-item.component.html',
@@ -12,18 +12,8 @@ export class TodoItemComponent {
   filter: 'all' | 'active' | 'done' = 'all';
   @Input() item: Item;
 
-
-
   allItems = [];
-  // private _listSearch: string = '';
-  // get listSearch():string{
-  //   return this.listSearch;
-  // }
 
-  // set listSearch(value:string){
-  //   this._listSearch = value;
-  //   console.log('In setter:',value);
-  // }
   get items() {
     if (this.filter === 'all') {
       return this.allItems;
@@ -31,20 +21,6 @@ export class TodoItemComponent {
     return this.allItems.filter(item => this.filter === 'done' ? item.done : !item.done);
   }
 
-  // addTitle(description: string) {
-  //   this.allItems.unshift({
-  //     description,
-  //     done: false
-  //   });
-  // }
-
-  // onSubmit(){
-  //   const item = {
-  //     title:this.title,
-  //     desc: this.desc,
-  //     done: false
-  //   }
-  // }
   addItem(title:string,description: string) {
     this.allItems.unshift({
       title,
@@ -62,5 +38,11 @@ export class TodoItemComponent {
   onSearchTextEntered(searchValue:string){
     this.searchText = searchValue;
     console.log(this.searchText);
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    // console.log("previous index = ", event.previousIndex);
+    // console.log("current index = ", event.currentIndex);
+    moveItemInArray(this.allItems, event.previousIndex, event.currentIndex);
   }
 }
